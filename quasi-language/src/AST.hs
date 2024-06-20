@@ -5,7 +5,10 @@ module AST ( Statement (..)
            , Factor
            ) where
 
+data Program = Program Statement deriving (Show, Eq)
+
 data Statement = Assign String Expression
+               | Empty
                deriving (Show, Eq)
 
 data Expression = Plus Term Term
