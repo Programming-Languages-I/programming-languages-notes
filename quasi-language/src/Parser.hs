@@ -11,7 +11,8 @@ parseStatement :: Parser Statement
 parseStatement = parseAssigment
 
 parseAssigment :: Parser Statement
-parseAssigment = Assign <$> (parseIdentifier <* parseAssignSymbol) <*> (parseExpression)
+-- parseAssigment = Assign <$> (parseIdentifier <* parseAssignSymbol) <*> (parseExpression)
+parseAssigment = Assign <$> (qlIdentifier <* parseAssignSymbol) <*> (parseExpression)
 
 parseAssignSymbol :: Parser Char
 parseAssignSymbol = char ':' <* char '='
@@ -34,7 +35,8 @@ languageDef = emptyDef
 lexer :: TokenParser st
 lexer = makeTokenParser languageDef
 
-identifier = P.identifier lexer
+-- identifier = P.identifier lexer
+qlIdentifier = P.identifier lexer
 
 parseIdentifier :: Parser String
 parseIdentifier = many1 letter
