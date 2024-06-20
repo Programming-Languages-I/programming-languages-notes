@@ -1,6 +1,12 @@
 module Lib
     ( someFunc
     ) where
+        
+import Text.Parsec
+import Parser as P
 
 someFunc :: IO ()
-someFunc = putStrLn "someFunc"
+someFunc = do
+    content <- readFile "./app/resources/code.qs"
+    let result = parse (P.parseStatement) "./app/resources/code.qs" content
+    print result
