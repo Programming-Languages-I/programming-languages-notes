@@ -1,4 +1,4 @@
-module Parser where
+module Parser ( parseStatement ) where
 
 import AST as AST
 import Text.Parsec.String
