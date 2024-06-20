@@ -10,7 +10,7 @@ data Program = Program CompoundStatement deriving (Show, Eq)
 data CompoundStatement = CompStatement [Statement] deriving (Show, Eq)
 
 data Statement = Assign String Expression
-               | Empty
+               | EmptyStatement
                deriving (Show, Eq)
 
 data Expression = Plus Term Term
