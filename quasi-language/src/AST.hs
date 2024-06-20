@@ -13,12 +13,12 @@ data Statement = Assign String Expression
 
 data Expression = Plus Term Term
                 | Minus Term Term 
-                | Term
+                | ETerm Term
                 deriving (Show, Eq)
 
 data Term = Div Factor Factor
           | Mul Factor Factor
-          | Factor
+          | TermFactor Factor
           deriving (Show, Eq)
 
 data Factor = Value Int deriving (Show, Eq)           
