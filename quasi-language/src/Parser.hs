@@ -41,7 +41,7 @@ parseIdentifier = many1 letter
 
 parseExpression :: Parser Expression
 -- parseExpression = parsePlus <|> parseMinus <|> parseTerm
-parseExpression = parsePlus
+parseExpression = parseOperation <* parseSemicolon
 
 -- parseExpression :: Parser (String, Int)
 -- parseExpression = do
@@ -49,6 +49,15 @@ parseExpression = parsePlus
 --     _ <- string ":="
 --     d <- digit
 --     return (letters, d)
+
+parseOperation :: Parser Expression
+parseOperation = parsePlus
+
+parseSemicolon :: Parser Char
+parseSemicolon = char ';'
+
+parseDot :: Parser Char
+parseDot = char '.'
 
 parsePlus :: Parser Expression
 parsePlus = AST.Plus <$> (parseTermFactor <* parsePlusSign) <*> parseTermFactor
