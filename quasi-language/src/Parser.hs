@@ -7,6 +7,9 @@ import Text.Parsec.Token
 import Text.Parsec.Language
 import qualified Text.Parsec.Token as P
 
+parseCompoundStatement :: Parser Statement
+parseCompoundStatement = (string "BEGIN" *> (whitespace lexer) *> parseStatement <* (whitespace lexer) <* string "END")
+
 parseStatement :: Parser Statement
 parseStatement = parseAssigment
 
