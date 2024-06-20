@@ -10,6 +10,12 @@ import qualified Text.Parsec.Token as P
 parseStatement :: Parser Statement
 parseStatement = parseAssigment
 
+parseEmpty :: Parser Statement
+parseEmpty = AST.EmptyStatement <$ (parseNewLine)
+
+parseNewLine :: Parser Char
+parseNewLine = (char '\n') <|> (char '\r') <|> (char '\t')
+
 parseAssigment :: Parser Statement
 -- parseAssigment = Assign <$> (parseIdentifier <* parseAssignSymbol) <*> (parseExpression)
 parseAssigment = Assign <$> (qlIdentifier <* parseAssignSymbol) <*> (parseExpression)
