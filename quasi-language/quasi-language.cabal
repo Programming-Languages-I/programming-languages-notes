@@ -26,7 +26,9 @@ source-repository head
 
 library
   exposed-modules:
+      AST
       Lib
+      Parser
   other-modules:
       Paths_quasi_language
   autogen-modules:
