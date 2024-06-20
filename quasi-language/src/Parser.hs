@@ -11,7 +11,9 @@ parseCompoundStatement :: Parser Statement
 parseCompoundStatement = (string "BEGIN" *> (whitespace lexer) *> parseStatement <* (whitespace lexer) <* string "END")
 
 parseStatement :: Parser Statement
-parseStatement = parseAssigment
+parseStatement = (try parseAssigment)         <|>
+                 (try parseCompoundStatement) <|>
+                 (try parseEmpty)
 
 parseEmpty :: Parser Statement
 parseEmpty = AST.EmptyStatement <$ (parseNewLine)
