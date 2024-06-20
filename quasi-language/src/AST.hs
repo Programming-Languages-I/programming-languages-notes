@@ -5,7 +5,9 @@ module AST ( Statement (..)
            , Factor (..)
            ) where
 
-data Program = Program Statement deriving (Show, Eq)
+data Program = Program CompoundStatement deriving (Show, Eq)
+
+data CompoundStatement = CompStatement [Statement] deriving (Show, Eq)
 
 data Statement = Assign String Expression
                | Empty
