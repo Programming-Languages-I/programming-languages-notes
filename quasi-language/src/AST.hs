@@ -1,8 +1,8 @@
 module AST ( Statement (..)
            , Identifier
-           , Expression
-           , Term
-           , Factor
+           , Expression (..)
+           , Term (..)
+           , Factor (..)
            ) where
 
 data Program = Program Statement deriving (Show, Eq)
